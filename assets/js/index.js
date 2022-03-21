@@ -5,7 +5,7 @@ function getUserInfo(){
 $.ajax({
     method:'GET',
     url:'/my/userinfo',
-    //请求头对象就是登录是返回的鬼东西
+    //请求头对象就是登录是返回的密钥
     headers:{
         // 改去base那里了
         // Authorization:localStorage.getItem('token') || ''
@@ -16,6 +16,7 @@ $.ajax({
         }
         // 调用渲染头像token
         renderAvatar(res.data)
+        // console.log(res.data)
     },//不论成功还是失败，最终都会调用 complete 回调函数
     //  complete:function(res){
     //     if (res.responseJSON.status === 1 || res.responseJSON.message === '身份认证失败!'){
@@ -42,14 +43,14 @@ function renderAvatar(user){
     var name = user.nickname  || user.username;
     $('#welcome').html('欢迎&nbsp &nbsp'+name);
     if (!user.user_pic){
+                // console.log('无头像')+渲染文本头像
         $('.layui-nav-img').hide()
-        console.log('无头像');
         var firstname = name[0];
         $('.text-avatar').html(firstname);
     }else{
         console.log('have头像');
         $('.text-avatar').hide();
-        $('.layui-nav-img').attr('src',user_pic).show();
+        $('.layui-nav-img').attr('src',user.user_pic).show();
 
     }
 }
