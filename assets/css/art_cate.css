@@ -1,0 +1,17 @@
+html,
+body{padding: 0;
+margin: 0;}
+
+body{
+    padding: 15px;
+    background-color: azure;
+}
+
+.layui-card-header{
+    display: flex;
+    justify-content: space-between;
+}
+#form-add,#dialog-edit{
+    padding: 20px;
+    padding-right: 55px;
+}
